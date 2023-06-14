@@ -1,0 +1,22 @@
+module Ml
+  module Forest
+    VERSION: String
+
+    # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+    module Node
+      class OutNode
+        attr_reader data: Array[any]
+      end
+
+      class InNode
+        attr_reader data: Array[any]
+      end
+    end
+
+    class Tree
+      attr_reader forest_helper: class
+      attr_reader trees: Array[Node::InNode | Node::OutNode]
+    end
+  end
+end
