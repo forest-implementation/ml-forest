@@ -5,18 +5,18 @@ require_relative "lib/ml/forest/version"
 Gem::Specification.new do |spec|
   spec.name = "ml-forest"
   spec.version = Ml::Forest::VERSION
-  spec.authors = ["Adam Ulrich"]
-  spec.email = ["a_ulrich@utb.cz"]
+  spec.authors = ["Adam Ulrich", "Jan Krňávek"]
+  spec.email = %w[a_ulrich@utb.cz krnavek@utb.cz]
 
   spec.summary = "Random Forest algorithm."
-  spec.description = "Ruby implementation of the Random Forest algorithm, it allows to use services such as ml_forest/isolation."
-  # spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.description = "Ruby implementation of the Random Forest algorithm, it allows to use custom services deriving the same function like service/mock (see organization repo for more examples)."
+  spec.homepage = "https://github.com/forest-implementation"
   spec.required_ruby_version = ">= 2.6.0"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
-  # spec.metadata["homepage_uri"] = spec.homepage
-  # spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/forest-implementation/ml-forest"
   # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
