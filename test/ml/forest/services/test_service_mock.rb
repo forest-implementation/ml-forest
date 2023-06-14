@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "ml/forest/services/mock"
+require "ml/forest/service/mock"
 
 class TestServiceMock < Minitest::Test
-  include Ml::Forest::Services
+  include Ml::Forest::Service
   def test_dimensional_group_by
     hp = Mock.new(max_depth: 3)
     data = [[2, 2], [3, 3], [7, 8]]

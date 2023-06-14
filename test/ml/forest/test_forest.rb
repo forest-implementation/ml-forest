@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "ml/forest/services/mock"
+require "ml/forest/service/mock"
 
 class Float
   def to_h
@@ -11,7 +11,7 @@ end
 
 class Ml::TestForest < Minitest::Test
   include Ml::Forest
-  include Ml::Forest::Services
+  include Ml::Forest::Service
   def test_that_it_has_a_version_number
     refute_nil ::Ml::Forest::VERSION
   end

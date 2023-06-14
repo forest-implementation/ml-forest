@@ -2,7 +2,7 @@
 
 module Ml
   module Forest
-    module Services
+    module Service
       class Mock
 
         DataPoint = Data.define(:depth, :data)
