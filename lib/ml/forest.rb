@@ -21,6 +21,10 @@ module Ml
       def evaluate_forest(element)
         trees.map { |tree| Node.walk_nodes(tree, element, forest_helper: @forest_helper) }
       end
+
+      def fit_predict(data, forest_helper:)
+        forest_helper.evaluate_score(evaluate_forest(data))
+      end
     end
   end
 end
