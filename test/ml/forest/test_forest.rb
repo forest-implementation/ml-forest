@@ -28,7 +28,7 @@ class Ml::TestForest < Minitest::Test
   end
 
   def test_walk_nodes
-    hm = Mock.new(max_depth: 3)
+    hm = Mock.new()
     s = Node.init_from_data([[1, 1], [2, 2], [3, 3], [1000, 1000]], forest_helper: hm)
     assert_equal [[2, 2]], Node.walk_nodes(s, [2, 2], forest_helper: hm)
     assert_equal [[3, 3]], Node.walk_nodes(s, [4, 8], forest_helper: hm)
