@@ -4,12 +4,7 @@ module Ml
   module Forest
     module Service
       class Mock
-
-        DataPoint = Data.define(:depth, :data)
-
-        def initialize(max_depth: 16)
-          @max_depth = max_depth
-        end
+        def initialize() end
 
         def split_point(data)
           min, max = data.map { |x| x[0] }.minmax
@@ -33,7 +28,7 @@ module Ml
         end
 
         def end_condition(data)
-          data == @max_depth || data.length <= 1
+          data.length <= 1
         end
       end
     end

@@ -6,7 +6,7 @@ require "ml/forest/service/mock"
 class TestServiceMock < Minitest::Test
   include Ml::Forest::Service
   def test_dimensional_group_by
-    hp = Mock.new(max_depth: 3)
+    hp = Mock.new()
     data = [[2, 2], [3, 3], [7, 8]]
 
     split_point = hp.split_point(data)
