@@ -2,8 +2,7 @@
 
 module Node
   def self.init_from_data(data, forest_helper:)
-    # tell me how to count the minmax from your data
-    minmaxgroups = forest_helper.init_minmax(data)
+    minmaxgroups = data.data.transpose.map(&:minmax).transpose
     return OutNode.new(data, minmaxgroups) if forest_helper.end_condition(data)
 
     split_point = forest_helper.split_point(data)
@@ -28,7 +27,7 @@ module Node
 
   OutNode = Data.define(:data, :minmaxborders) do
     def to_a
-      data
+      data.data
     end
   end
 

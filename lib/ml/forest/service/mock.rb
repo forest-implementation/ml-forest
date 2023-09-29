@@ -7,12 +7,8 @@ module Ml
         def initialize() end
 
         def split_point(data)
-          min, max = data.map { |x| x[0] }.minmax
+          min, max = data.data.map { |x| x[0] }.minmax
           (min + max) / 2.0
-        end
-
-        def init_minmax(data)
-          data.transpose.minmax
         end
 
         def decision_function(sp)
@@ -24,18 +20,22 @@ module Ml
         end
 
         def group(data, split_point)
-          { true => [], false => [] }.merge(data.group_by(&decision_function(split_point)))
+          res = { true => [], false => [] }.merge(data.data.group_by(&decision_function(split_point)))
+
+          {
+            true => Data.define(:data).new(data: res[true]),
+            false => Data.define(:data).new(data: res[false])
+          }
         end
 
         def get_sample(data, _)
-          data
+          Data.define(:data).new(data)
         end
 
         def end_condition(data)
-          data.length <= 1
+          data.data.length <= 1
         end
       end
     end
   end
 end
-

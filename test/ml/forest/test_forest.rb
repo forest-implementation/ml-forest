@@ -17,7 +17,8 @@ class Ml::TestForest < Minitest::Test
   end
 
   def test_init_from_data
-    node = Node.init_from_data([[1], [2], [3]], forest_helper: Mock.new)
+    node = Node.init_from_data(Mock.new.get_sample([[1], [2], [3]], ""), forest_helper: Mock.new)
+    pp node.to_a
     assert_equal node.to_a, [[[1]], [[[2]], [[3]]]]
     assert_equal node.split_point, (1 + 3) / 2.0
   end
@@ -28,15 +29,15 @@ class Ml::TestForest < Minitest::Test
   end
 
   def test_walk_nodes
-    hm = Mock.new()
-    s = Node.init_from_data([[1, 1], [2, 2], [3, 3], [1000, 1000]], forest_helper: hm)
-    assert_equal [[2, 2]], Node.walk_nodes(s, [2, 2], forest_helper: hm)
-    assert_equal [[3, 3]], Node.walk_nodes(s, [4, 8], forest_helper: hm)
-    assert_equal [[1000, 1000]], Node.walk_nodes(s, [600, 600], forest_helper: hm)
+    hm = Mock.new
+    s = Node.init_from_data(Data.define(:data).new([[1, 1], [2, 2], [3, 3], [1000, 1000]]), forest_helper: hm)
+    assert_equal [[2, 2]], Node.walk_nodes(s, [2, 2], forest_helper: hm).data
+    assert_equal [[3, 3]], Node.walk_nodes(s, [4, 8], forest_helper: hm).data
+    assert_equal [[1000, 1000]], Node.walk_nodes(s, [600, 600], forest_helper: hm).data
   end
 
   def test_evaluate_forest
     forest = Tree.new([[1, 1], [2, 2], [3, 3], [7, 1000]], trees_count: 3, forest_helper: Mock.new)
-    assert_equal([[[2, 2]], [[2, 2]], [[2, 2]]], forest.evaluate_forest([2, 2]))
+    assert_equal([[[2, 2]], [[2, 2]], [[2, 2]]], forest.evaluate_forest([2, 2]).map(&:data))
   end
 end
