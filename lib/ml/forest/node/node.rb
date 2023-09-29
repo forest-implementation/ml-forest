@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module Node
-  def self.init_from_data(data, minmaxgroups = data.data.transpose.map(&:minmax).transpose, forest_helper:)
+  def self.init_from_data(data, forest_helper:)
+    # tell me how to count the minmax from your data
+    minmaxgroups = forest_helper.init_minmax(data)
     return OutNode.new(data, minmaxgroups) if forest_helper.end_condition(data)
 
     split_point = forest_helper.split_point(data)
@@ -9,8 +11,7 @@ module Node
 
     InNode.new(
       node_groups.transform_values do |group|
-        minmaxgroup = group.data.transpose.map(&:minmax).transpose
-        init_from_data(group, minmaxgroup, forest_helper: forest_helper)
+        init_from_data(group, forest_helper: forest_helper)
       end,
       split_point,
       minmaxgroups

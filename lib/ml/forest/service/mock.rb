@@ -11,6 +11,10 @@ module Ml
           (min + max) / 2.0
         end
 
+        def init_minmax(data)
+          data.transpose.minmax
+        end
+
         def decision_function(sp)
           ->(x) { x[0] < sp }
         end
