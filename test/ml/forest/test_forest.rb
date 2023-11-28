@@ -20,7 +20,7 @@ class Ml::TestForest < Minitest::Test
     node = Node.init_from_data(Mock.new.get_sample([[1], [2], [3]], ""), forest_helper: Mock.new)
     pp node.to_a
     assert_equal node.to_a, [[[1]], [[[2]], [[3]]]]
-    assert_equal node.split_point, (1 + 3) / 2.0
+    assert_equal node.data, (1 + 3) / 2.0
   end
 
   def test_forest_creation
