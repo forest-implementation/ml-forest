@@ -35,6 +35,12 @@ module Ml
         def end_condition(data)
           data.data.length <= 1
         end
+
+        def evaulate_score(data)
+          pp "MOCK - NOT IMPLEMENTED"
+          data
+        end
+        
       end
     end
   end
