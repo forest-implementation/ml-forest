@@ -37,7 +37,6 @@ module Ml
         end
 
         def evaluate_score(data)
-          pp "MOCK - NOT IMPLEMENTED"
           data
         end
         
