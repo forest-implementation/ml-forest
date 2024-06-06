@@ -18,6 +18,7 @@ Add dependency for the forest
 
     $ bundle add ml-forest --github=forest-implementation/ml-forest
 
+
 ## Usage
 
 In your file, import forest and service (we can leverage on the mocked service for now)
@@ -31,6 +32,10 @@ forest = Ml::Forest::Tree.new([5, 8, 3, 4, 2, 7].map{|x| [x]} , trees_count: 1, 
 pp forest.evaluate_forest([6])
 pp forest.evaluate_forest([6.24])
 ```
+
+Run the file, e.g.:
+
+    $ bundle exec ruby lib/mygem.rb
 
 ## Test
 
