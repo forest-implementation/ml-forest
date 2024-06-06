@@ -1,8 +1,10 @@
 # Ml::Forest
 
-Ml forest is the standalone implementation of forest.
+Ml forest is the standalone implementation of [Isolation Forest](https://ieeexplore.ieee.org/abstract/document/4781136) by Liu et al.
 
-To work properly, a service needs to be introduced (see https://github.com/forest-implementation/ml-service-sort)
+To work properly, a service needs to be introduced (see https://github.com/forest-implementation/ml-service-sort).
+
+This repository comes with the mocked service interface to reference the methods needed.
 
 ## Installation
 
@@ -34,4 +36,4 @@ pp forest.evaluate_forest([6.24])
 
     $ bundle exec rake test
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ml-forest.
+Bug reports and pull requests are welcome on GitHub at https://github.com/forest-implementation/ml-forest/.
