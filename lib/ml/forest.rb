@@ -22,6 +22,17 @@ module Ml
         trees.map { |tree| Node.walk_nodes(tree, element, forest_helper: @forest_helper) }
       end
 
+      def self.flat(tree)
+        (tree.branches.values.map do |inout| 
+          case inout
+            in Node::OutNode
+               inout.data
+            in Node::InNode
+              flat(inout)
+          end
+        end).flatten
+      end 
+
       def fit_predict(data, forest_helper = @forest_helper)
         forest_helper.evaluate_score(evaluate_forest(data))
       end
